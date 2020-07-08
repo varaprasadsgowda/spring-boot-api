@@ -10,7 +10,8 @@ import java.util.UUID;
 
 @RequestMapping("api/v1/person")
 @RestController
-public class PersonController {
+public class PersonController
+{
     private  final PersonService personService;
 
     @Autowired
@@ -29,6 +30,7 @@ public class PersonController {
     {
         return personService.getAllPeople();
     }
+
     @GetMapping(path = "{id}")
     public Person getPersonById(@PathVariable("id") UUID id)
     {
@@ -41,7 +43,9 @@ public class PersonController {
     {
         personService.deletePerson(id);
     }
-    @PostMapping(path = "{id}")
+
+
+    @PutMapping(path = "{id}")
     public void updatePerson(@PathVariable("id") UUID id,@RequestBody Person person)
     {
         personService.updatePerson(id, person);
